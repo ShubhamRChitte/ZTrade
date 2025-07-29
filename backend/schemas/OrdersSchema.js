@@ -4,6 +4,8 @@ const OrdersSchema = new Schema({
     qty: Number,
     price: Number,
     mode: String,
+    date:String,
+    time:String,
 });
 
 module.exports = {OrdersSchema};

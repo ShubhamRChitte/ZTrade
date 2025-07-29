@@ -5,8 +5,8 @@ const HoldingsSchema = new Schema({
     qty: Number,
     avg: Number,
     price: Number,
-    net: String,
-    day: String,
+    net: Number,
+    day: Number,
 });
 
 module.exports = {HoldingsSchema};
