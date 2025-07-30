@@ -18,8 +18,8 @@ function Hero() {
   <div className="row border-top px-3 px-md-5 py-4" style={{ fontSize: "1.1rem", color: "#424242" }}>
     <div className="col-12 col-lg-6 mb-4 mb-lg-0 px-3 px-md-5">
       <p>
-        We kick-started operations on the 15th of August, 2010 with the goal of breaking all barriers that traders and investors face in India in terms of cost, support, and technology.
-        We named the company Zerodha, a combination of Zero and "Rodha", the Sanskrit word for barrier.
+        We kick-started operations on the 30th of July, 2025 with the goal of breaking all barriers that traders and investors face in India in terms of cost, support, and technology.
+        We named the company ZTrade, a combination of Z and "Trade", the Sanskrit word for barrier.
       </p>
 
       <p>

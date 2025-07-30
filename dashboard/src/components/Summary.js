@@ -1,5 +1,6 @@
 import React ,{useState,useEffect} from "react";
 import axios from 'axios';
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 
 const Summary = () => {
   
@@ -8,7 +9,7 @@ const Summary = () => {
   const [balance,setBalance]=useState(0);
 
     useEffect(()=>{
-      axios.get("http://localhost:3002/userData",
+      axios.get(`${backendURL}/userData`,
         {
           withCredentials: true 
     }).then((res)=>{

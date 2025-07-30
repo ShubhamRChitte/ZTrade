@@ -20,8 +20,8 @@ function Team() {
     <div className="col-12 col-lg-6 px-4 px-md-5">
       <h1 className="mb-4">People</h1>
       <p>
-        Nithin bootstrapped and founded Zerodha in 2010 to overcome the hurdles he faced during his decade-long stint as a trader.
-        Today, Zerodha has changed the landscape of the Indian broking industry.
+        Nithin bootstrapped and founded ZTrade in 2025 to overcome the hurdles he faced during his decade-long stint as a trader.
+        Today, ZTrade has changed the landscape of the Indian broking industry.
       </p>
 
       <p>

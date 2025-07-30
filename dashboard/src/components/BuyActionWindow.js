@@ -7,6 +7,10 @@ import GeneralContext from "./GeneralContext";
 
 import "./BuyActionWindow.css";
 
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+
+
+
 const BuyActionWindow = ({ uid,price,percent }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(price);
@@ -16,7 +20,7 @@ const BuyActionWindow = ({ uid,price,percent }) => {
 
 
   useEffect(()=>{
-        axios.get("http://localhost:3002/userData",
+        axios.get(`${backendURL}/userData`,
           {
             withCredentials: true 
       }).then((res)=>{
@@ -26,7 +30,7 @@ const BuyActionWindow = ({ uid,price,percent }) => {
 
 
   const handleBuyClick = async() => {
-    const {data}= await axios.post("http://localhost:3002/newOrder", {
+    const {data}= await axios.post(`${backendURL}/newOrder`, {
       name: uid,
       qty: stockQuantity,
       avg_price: stockPrice,
@@ -57,7 +61,7 @@ const BuyActionWindow = ({ uid,price,percent }) => {
   return (
 
 
-    <div className="container mt-4 p-3 border rounded shadow" id="buy-window" draggable="true">
+    <div className="container mt-4 p-3 border rounded shadow mb-5" id="buy-window" draggable="true">
       <div className="regular-order">
         <h2 className="text-center text-break mb-4">{uid}</h2>
 

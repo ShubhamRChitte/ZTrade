@@ -21,7 +21,8 @@ code {
 }
 
 .content {
-  flex-basis: 68%;
+  /* flex-basis: 68%; */
+  flex: 1;
   height: 100%;
   box-sizing: border-box;
   overflow-y: auto;
@@ -999,3 +1000,226 @@ span a {
 .logo-text .trade-text {
   color: #333;
 }
+
+
+
+/* Hide watchlist nav item by default */
+.nav-watchlist {
+  display: none;
+}
+
+/* Show it only on screens <= 768px */
+@media screen and (max-width: 768px) {
+  .nav-watchlist {
+    display: inline-block;
+    color: rgb(245, 104, 52);
+    font-weight: 500;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Extra large screens (desktop/laptops > 1200px) */
+@media (min-width: 1200px) {
+  /* Optional: large screen customizations */
+}
+
+/* Large screens (laptops/desktops between 992px - 1200px) */
+@media (max-width: 1200px) {
+  .home_page {
+    font-size: 1.5rem;
+  }
+
+  .home_page button {
+    padding: 0.6rem 1rem;
+    font-size: 1.2rem;
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .watchlist-container,
+  .menu-container {
+    width: 100%;
+    flex-basis: 100%;
+    height: auto;
+  }
+
+  .watchlist-number {
+    width: 100%;
+    flex-direction: row;
+    position: static;
+  }
+
+  .data {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+/* Medium screens (tablets between 768px - 992px) */
+@media (max-width: 992px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .col {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+
+  .indices-container,
+  .watchlist-container,
+  .menu-container {
+    flex-basis: 100%;
+    border: none;
+    padding: 10px;
+  }
+
+  .profile {
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+
+  .menus li {
+    margin-right: 15px;
+  }
+
+  .order-table th,
+  .order-table td {
+    font-size: 0.7rem;
+    padding: 10px 5px;
+  }
+}
+
+/* Small screens (phones between 576px - 768px) */
+@media (max-width: 768px) {
+  .ztrade-logo {
+    font-size: 1.2rem;
+  }
+
+  .logo-icon {
+    font-size: 1.2rem;
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .watchlist-container,
+  .menu-container {
+    flex-basis: 100%;
+    height: auto;
+  }
+
+  .menus li {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .watchlist-number {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .data {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .actions span button {
+    width: 30px;
+    height: 25px;
+    font-size: 0.7rem;
+  }
+
+  .form_container {
+    padding: 1.5rem;
+  }
+
+  .form_container h2 {
+    font-size: 1.2rem;
+  }
+
+  .form_container input {
+    font-size: 1rem;
+  }
+
+  .form_container button {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}
+
+/* Extra small screens (phones < 576px) */
+@media (max-width: 576px) {
+  .profile .username {
+    display: none;
+  }
+
+  .profile .avatar {
+    width: 25px;
+    height: 25px;
+    font-size: 0.6rem;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list li {
+    padding: 10px;
+  }
+
+  .menus {
+    flex-direction: column;
+  }
+
+  .menus li {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .topbar-container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .indices-container {
+    flex-direction: column;
+  }
+
+  .nifty,
+  .sensex {
+    flex-direction: column;
+  }
+
+  .order-table td {
+    font-size: 0.6rem;
+  }
+
+  .order-table td:first-child p {
+    width: 100%;
+  }
+}
+
+
+
+

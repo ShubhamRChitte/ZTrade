@@ -1,7 +1,7 @@
 import React, { useState ,useContext,useEffect} from 'react';
 import {Tooltip,Grow} from "@mui/material";
 import axios from 'axios';
-import GeneralContext from "./GeneralContext";
+import GeneralContext from "./GeneralContext"
 
 import {KeyboardArrowUp,KeyboardArrowDown, BarChartOutlined, MoreHoriz} from "@mui/icons-material";
 import { DoughnutChart } from './DognutChart';
@@ -11,7 +11,6 @@ const backendURL = process.env.REACT_APP_BACKEND_URL;
 function WatchList({showWatch}) {
   const [watchlist, setWatchlist] = useState([]);
   const [search, setSearch] = useState("");
-  const [showWatchlist, setShowWatchlist] = useState(true);
   useEffect( ()=>{
         axios.get(`${backendURL}/watchlist`,
             {
@@ -20,19 +19,6 @@ function WatchList({showWatch}) {
             setWatchlist(res.data); 
           })
 
-
-          const handleResize = () => {
-              if (window.innerWidth <= 768) {
-                setShowWatchlist(false); // hide on small screens
-              } else {
-                setShowWatchlist(true); // show on large screens
-              }
-            };
-
-            window.addEventListener('resize', handleResize);
-            handleResize(); // run once on load
-
-            return () => window.removeEventListener('resize', handleResize);
   },[]);
 
   const filteredWatchlist = watchlist.filter((stock) =>
@@ -68,7 +54,7 @@ const data = {
 
     return (  
 <>
-     {showWatchlist && 
+    
         <div className="watchlist-container"  >
           <div className="search-container">
             <input
@@ -101,7 +87,7 @@ const data = {
           
           <DoughnutChart data={data}/>
         </div>
-}
+
     </>
     );
 }

@@ -10,6 +10,7 @@ import Orders from "./Orders";
 import Positions from "./Positions";
 import Summary from "./Summary";
 import WatchList from "./WatchList";
+import WatchList2 from "./WatchList2";
 import NotFound from "./NotFound";
 import { GeneralContextProvider } from "./GeneralContext";
 
@@ -19,7 +20,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <GeneralContextProvider>
         <WatchList />
-      </GeneralContextProvider>
+      
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Summary />} />
@@ -28,9 +29,11 @@ const Dashboard = () => {
           <Route path="/positions" element={<Positions />} />
           <Route path="/funds" element={<Funds />} />
           <Route path="/apps" element={<Apps />} />
+          <Route path="/watchlist" element={<WatchList2 />} />
           <Route path='*' element={<NotFound/>}/>
         </Routes>
       </div>
+      </GeneralContextProvider>
     </div>
   );
 };

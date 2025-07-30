@@ -10,6 +10,7 @@ const authRoute = require("./Routes/AuthRoute");
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
 
+
 const {HoldingsModel}= require("./model/HoldingsModel");
 const {PositionsModel}= require("./model/PositionsModel");
 const {OrdersModel} = require('./model/OrdersModel');
@@ -174,6 +175,7 @@ app.post("/sellOrder",VerifyUser,async(req,res)=>{
         User.orders.push(new_order);
         await User.save();
         await new_order.save(); 
+        console.log(deleteHolding);
        res.status(200).json({ success: true, message: "Your share is sell successful" });        
     }
     else{

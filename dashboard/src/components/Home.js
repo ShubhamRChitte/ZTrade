@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import TopBar from "./TopBar";
 import Dashboard from "./Dashboard";
-
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+const frontendURL = process.env.REACT_APP_FRONTEND_URL;
 
 function Home() {
   const navigate = useNavigate();
@@ -18,10 +19,10 @@ function Home() {
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-        window.location.href = "http://localhost:3000";
+        window.location.href = `${frontendURL}`;
       }
       const { data } = await axios.post(
-        "http://localhost:3002",
+        `${backendURL}`,
         {},
         { withCredentials: true },
       );
@@ -29,19 +30,6 @@ function Home() {
       setUsername(user);
       setUserID(user_id);
 
-      // return status
-      //   ? toast(`Hello ${user}`, {
-      //       position: "top-right",
-      //     })
-      //   : (removeCookie("token") , window.location.href = "http://localhost:3000"
-      // );
-      
-
-          
-      // if (status && !hasGreeted) {
-      //   toast(`Hello ${user}`, { position: "top-right" });
-      //   setHasGreeted(true);
-      // }
       if (status && !sessionStorage.getItem("hasGreeted")) {
         toast.success(`Hello ${user}`);
         sessionStorage.setItem("hasGreeted", "true");
@@ -50,7 +38,7 @@ function Home() {
 
       if (!status) {
         removeCookie("token");
-        window.location.href = "http://localhost:3000";
+        window.location.href = `${frontendURL}`;
       }
 
 
@@ -59,10 +47,12 @@ function Home() {
     };
     verifyCookie();
   }, [cookies, navigate, removeCookie]);
+
   const Logout = () => {
     removeCookie("token");
-     window.location.href = "http://localhost:3000";
+     window.location.href = `${frontendURL}`;
   };
+
     return (
         <>
         <TopBar 

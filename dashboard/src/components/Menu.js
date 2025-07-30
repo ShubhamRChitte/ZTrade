@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
+import WatchList2 from "./WatchList2";
 
+const frontendURL = process.env.REACT_APP_FRONTEND_URL;
 
 function Menu({username,userID}) {
     const [cookies, removeCookie] = useCookies([]);
     const [selectedMenu,setSelectedMenu]=useState(0);
     const [isProfileDropdownOpen,setIsProfileDropdownOpen]=useState(false);
+    const [showWatchlist,setShowWatchlist]=useState(false);
     const handleMenuClick = (index)=>{
         setSelectedMenu(index);
     }
@@ -20,8 +23,7 @@ function Menu({username,userID}) {
 
  const Logout = () => {
     removeCookie("token");
-    // navigate("/signup");
-     window.location.href = "http://localhost:3000";
+     window.location.href = `${frontendURL}`;
   };
 
 
@@ -29,7 +31,6 @@ function Menu({username,userID}) {
   return (
     <>
     <div className="menu-container">
-      {/* <img src="logo.png" style={{ width: "50px" }} /> */}
       <Link className="navbar-brand d-flex align-items-center" to="/">
               <i className="fas fa-chart-line logo-icon me-2"></i>
               <span className="logo-text">
@@ -105,6 +106,19 @@ function Menu({username,userID}) {
                             style={{textDecoration:"none"}}
                             onClick={()=>handleMenuClick(5)} >
                             <p className={selectedMenu=== 5 ? activeMenuClass:menuClass}>Apps</p>  
+                        </Link>
+                    </li>
+                    <li className="nav-item ">
+                        <Link 
+                            className="nav-link nav-watchlist "
+                            to="/watchlist" 
+                            style={{textDecoration:"none"}}
+                            onClick={() => {
+                            handleMenuClick(6);
+                            setShowWatchlist(prev => !prev)
+                            }}
+                            >
+                            <p className={selectedMenu=== 6 ? activeMenuClass:menuClass}>Watchlist</p>
                         </Link>
                     </li>
                 </ul>

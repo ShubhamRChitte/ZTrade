@@ -4,6 +4,9 @@ import {toast } from "react-toastify";
 
 import axios from "axios";
 
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+
+
 const Funds = () => {
   const [amount, setAmount] = useState(1);
   const [password, setPassword] = useState("");
@@ -14,7 +17,7 @@ const Funds = () => {
   const [balance,setBalance]=useState(0);
   
   useEffect(()=>{
-    axios.get("http://localhost:3002/userData",
+    axios.get(`${backendURL}/userData`,
       {
           withCredentials: true 
       }).then((res)=>{
@@ -28,7 +31,7 @@ const Funds = () => {
           }, 0).toFixed(2); 
 
   const handleAmountClick =async()=>{
-   const{data}= await axios.post("http://localhost:3002/addMoney", {
+   const{data}= await axios.post(`${backendURL}/addMoney`, {
       amount:amount,
       password:password,
     }, 
@@ -48,7 +51,7 @@ const Funds = () => {
 
 
   const handleWithdrawClick =async()=>{
-  const {data}= await axios.post("http://localhost:3002/withdrawMoney", {
+  const {data}= await axios.post(`${backendURL}/withdrawMoney`, {
       amount:amount,
       password:password,
     }, 
@@ -211,63 +214,6 @@ const Funds = () => {
       </div>
     }
       
-      <div className="row">
-        <div className="col">
-          <span>
-            <p>Equity</p>
-          </span>
-
-          <div className="table">
-            <div className="data">
-              <p>Available margin</p>
-              <p className="imp colored">{balance.toFixed(2)}</p>
-            </div>
-            <div className="data">
-              <p>Used margin</p>
-               <p className="imp">{totalInvestment}</p>
-            </div>
-            <div className="data">
-              <p>Available cash</p>
-              <p className="imp">{balance.toFixed(2)}</p>
-            </div>
-            <hr />
-            <div className="data">
-              <p>Opening Balance</p>
-              <p>{balance.toFixed(2)}</p>
-            </div>
-            <div className="data">
-              <p>SPAN</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Delivery margin</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Exposure</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Options premium</p>
-              <p>0.00</p>
-            </div>
-            <hr />
-            <div className="data">
-              <p>Collateral (Liquid funds)</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Collateral (Equity)</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Total Collateral</p>
-              <p>0.00</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       
     </>
   );

@@ -5,7 +5,7 @@ function Universe() {
     return ( 
 <div className='container'>
   <div className='text-center text-muted mb-4'>
-    <h1 className='mb-3'>The Zerodha Universe</h1>
+    <h1 className='mb-3'>The ZTrade Universe</h1>
     <p style={{ fontSize: "1.1rem" }}>
       Extend your trading and investment experience even further with our partner platforms
     </p>

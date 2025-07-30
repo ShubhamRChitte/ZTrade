@@ -1,13 +1,14 @@
 import React ,{useState,useEffect} from 'react';
 import axios from 'axios'
 import { VerticalGraph } from './VerticalGraph';
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 
 const Holdings = () => {
 
   const [allHoldings,setAllHoldings]=useState([]);
 
   useEffect(()=>{
-    axios.get("http://localhost:3002/allholdings",
+    axios.get(`${backendURL}/allholdings`,
       {
         withCredentials: true 
   }).then((res)=>{

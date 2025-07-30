@@ -21,7 +21,7 @@ function ProductPage() {
             <RightSection
                 imageURL="media/images/console.png" 
                 productName="Console"
-                productDescription="The central dashboard for your Zerodha account. Gain insights into your trades and investments with in-depth reports and visualisations."
+                productDescription="The central dashboard for your ZTrade account. Gain insights into your trades and investments with in-depth reports and visualisations."
                 learnMore=""
             />
             <LeftSection 
@@ -48,7 +48,7 @@ function ProductPage() {
                 googlePlay=""
                 appStore=""
             />
-            <h1 className='fs-5 text-center p-5 mt-5 mb-3 text-muted'>Want to know more about our technology stack? Check out the<a href='' style={{textDecoration:"none"}}> Zerodha.tech </a> blog.</h1>
+            <h1 className='fs-5 text-center p-5 mt-5 mb-3 text-muted'>Want to know more about our technology stack? Check out the<a href='' style={{textDecoration:"none"}}> ZTrade.tech </a> blog.</h1>
             <Universe/>
         </>
     );

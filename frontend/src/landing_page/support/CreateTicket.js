@@ -24,7 +24,7 @@ function CreateTicket() {
       {
         icon: 'fa-user',
         iconType: 'regular',
-        title: 'Your Zerodha Account',
+        title: 'Your ZTrade Account',
         links: [
           'Your Profile',
           'Account modification',

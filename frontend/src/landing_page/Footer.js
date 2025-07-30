@@ -6,13 +6,13 @@ function Footer() {
         <div className='container mt-5'>
           <div className='row'>
             <div className='col-3'>
-      <Link className="navbar-brand d-flex align-items-center" to="/">
-        <i className="fas fa-chart-line logo-icon me-2"></i>
-        <span className="logo-text">
-          <span className="z-letter">Z</span><span className="trade-text">Trade</span>
-        </span>
-      </Link>
-              <p style={{ fontSize: "13px", color: "#666" }} className='mt-4'>&copy; 2010 - 2025, Zerodha Broking Ltd.<br />All rights reserved.</p>
+              <Link className="navbar-brand d-flex align-items-center" to="/">
+                <i className="fas fa-chart-line logo-icon me-2"></i>
+                <span className="logo-text">
+                  <span className="z-letter">Z</span><span className="trade-text">Trade</span>
+                </span>
+              </Link>
+              <p style={{ fontSize: "13px", color: "#666" }} className='mt-4'>&copy; 2010 - 2025, ZTrade Broking Ltd.<br />All rights reserved.</p>
               <p className='Footer_icon border-bottom'>
                 <i className="fa-brands fa-x-twitter"></i>
                 <i className="fa-brands fa-square-facebook"></i>
@@ -56,8 +56,8 @@ function Footer() {
               <a href=''>Philosophy</a><br />
               <a href=''>Press & media</a><br />
               <a href=''>Careers</a><br />
-              <a href=''>Zerodha Cares (CSR)</a><br />
-              <a href=''>Zerodha.tech</a><br />
+              <a href=''>ZTrade Cares (CSR)</a><br />
+              <a href=''>ZTrade.tech</a><br />
               <a href=''>Open source</a><br />
             </div>
 
@@ -76,9 +76,9 @@ function Footer() {
           {/* Legal & Policy Texts */}
           <div className='row mt-5' style={{ fontSize: "12px", color: "#9b9b9b" }}>
             <p>
-              Zerodha Broking Ltd.: Member of NSE, BSE​ &​ MCX – SEBI Registration no.: INZ000031633...
-              For any complaints write to <a href='' style={{ textDecoration: "none" }}>complaints@zerodha.com</a>,
-              DP: <a href='' style={{ textDecoration: "none" }}>dp@zerodha.com</a>.
+              ZTrade Broking Ltd.: Member of NSE, BSE​ &​ MCX – SEBI Registration no.: INZ000031633...
+              For any complaints write to <a href='' style={{ textDecoration: "none" }}>complaints@ztrade.com</a>,
+              DP: <a href='' style={{ textDecoration: "none" }}>dp@ztrade.com</a>.
             </p>
             <p>
               Procedure to file complaint on <a href='' style={{ textDecoration: "none" }}>SEBI SCORES</a>...
@@ -87,7 +87,7 @@ function Footer() {
             <p>Investments in securities market are subject to market risks...</p>
             <p>Attention investors: 1) Stock brokers can accept securities as margins...</p>
             <p>
-              "Prevent unauthorised transactions... If someone claims to be part of Zerodha and offers tips,
+              "Prevent unauthorised transactions... If someone claims to be part of ZTrade and offers tips,
               <a href='' style={{ textDecoration: "none" }}> create a ticket here</a>.
             </p>
           </div>

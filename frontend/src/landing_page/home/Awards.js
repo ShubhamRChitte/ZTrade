@@ -17,7 +17,7 @@ function Awards() {
                 <div className="col-12 col-md-6 mt-4 mt-md-0 p-4">
                 <h1 className="h3 h-md-1">Largest Stock broker in India</h1>
                 <p className="mb-4">
-                    2+ million Zerodha clients contribute to over 15% of all retail order volumes in India daily by trading and investing in:
+                    2+ million ZTrade clients contribute to over 15% of all retail order volumes in India daily by trading and investing in:
                 </p>
 
                 <div className="row">

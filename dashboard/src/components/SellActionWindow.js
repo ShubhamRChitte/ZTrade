@@ -7,6 +7,9 @@ import GeneralContext from "./GeneralContext";
 
 import "./BuyActionWindow.css";
 
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+
+
 const SellActionWindow = ({ uid }) => {
   const [availableStockQuantity, setAvailableStockQuantity] = useState(0); 
   const [inputQuantity, setInputQuantity] = useState(1);
@@ -16,7 +19,7 @@ const SellActionWindow = ({ uid }) => {
   const { closeSellWindow } = useContext(GeneralContext); 
  
   useEffect(()=>{
-    axios.get("http://localhost:3002/allholdings",
+    axios.get(`${backendURL}/allholdings`,
       {
         withCredentials: true 
   }).then((res)=>{
@@ -30,7 +33,7 @@ const SellActionWindow = ({ uid }) => {
 
 
   const handleSellClick = async() => {
-    const{data}= await axios.post("http://localhost:3002/sellOrder", {
+    const{data}= await axios.post(`${backendURL}/sellOrder`, {
       name: uid,
       qty: inputQuantity,
       avg_price: stockPrice,
