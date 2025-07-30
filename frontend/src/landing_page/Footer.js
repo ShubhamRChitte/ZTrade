@@ -1,12 +1,17 @@
 import React from 'react';
-
+import {Link} from "react-router-dom";
 function Footer() {
     return ( 
        <footer className='border-top' style={{ backgroundColor: "#fbfbfb" }}>
         <div className='container mt-5'>
           <div className='row'>
             <div className='col-3'>
-              <img src='media/images/logo.svg' style={{ width: "60%" }} alt='logo' />
+      <Link className="navbar-brand d-flex align-items-center" to="/">
+        <i className="fas fa-chart-line logo-icon me-2"></i>
+        <span className="logo-text">
+          <span className="z-letter">Z</span><span className="trade-text">Trade</span>
+        </span>
+      </Link>
               <p style={{ fontSize: "13px", color: "#666" }} className='mt-4'>&copy; 2010 - 2025, Zerodha Broking Ltd.<br />All rights reserved.</p>
               <p className='Footer_icon border-bottom'>
                 <i className="fa-brands fa-x-twitter"></i>

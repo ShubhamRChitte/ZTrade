@@ -93,7 +93,7 @@ const Funds = () => {
         <Link className="btn btn-blue" onClick={handleOpenWithdrawClick}>Withdraw</Link>
       </div>
 
-    {/* add money */}
+    
     {openAmountWindow && 
       <div className="container" id="amount-window" draggable="true">
         <div className="regular-order">
@@ -151,7 +151,7 @@ const Funds = () => {
     }
 
 
-    {/* withdraw money */}
+    
     {openWithdrawWindow && 
       <div className="container" id="withdraw-window" draggable="true">
         <div className="regular-order">
@@ -267,6 +267,8 @@ const Funds = () => {
           </div>
         </div>
       </div>
+
+      
     </>
   );
 };

@@ -653,7 +653,7 @@ hr {
   height: 6%;
   border: none;
   padding: 15px 20px;
-  font-size: 0.9rem;
+  font-size: 0.77rem;
   font-weight: 400;
   border-bottom: 0.8px solid rgb(235, 234, 234);
 }
@@ -973,4 +973,29 @@ span a {
     padding: 0.6rem 1rem;
     font-size: 1.5rem;
   }
+}
+
+
+
+
+.ztrade-logo {
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  gap: 8px;
+}
+
+.logo-icon {
+  color: #0057FF;
+  font-size: 1.6rem;
+}
+
+.logo-text .z-letter {
+  color: #0057FF;
+}
+
+.logo-text .trade-text {
+  color: #333;
 }

@@ -359,3 +359,26 @@ span a {
   }
 }
 
+
+
+.ztrade-logo {
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  gap: 8px;
+}
+
+.logo-icon {
+  color: #0057FF;
+  font-size: 1.6rem;
+}
+
+.logo-text .z-letter {
+  color: #0057FF;
+}
+
+.logo-text .trade-text {
+  color: #333;
+}

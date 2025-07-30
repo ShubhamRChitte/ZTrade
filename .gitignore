@@ -1,5 +1,21 @@
-# zerodha/.gitignore
+# # zerodha/.gitignore
+# node_modules/
+# .env
+# .DS_Store
+# npm-debug.log
+
+# Node modules (ignore all node_modules in root and subfolders)
 node_modules/
+*/node_modules/
+
+# Environment files (ignore all .env files in root and subfolders)
 .env
+*/.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# macOS and Windows OS files
 .DS_Store
-npm-debug.log
+Thumbs.db
