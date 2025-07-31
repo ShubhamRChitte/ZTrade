@@ -31,7 +31,12 @@ mongoose
   .catch((err) => console.error(err));
 
   app.use(cors({
-    origin: true ,
+    origin:[
+    "http://localhost:3000",                  // dev frontend
+    "http://localhost:3001",                  // dev dashboard
+    "https://zerodha-frontend.onrender.com",  // prod frontend
+    "https://zerodha-dashboard.onrender.com", // prod dashboard
+  ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }));

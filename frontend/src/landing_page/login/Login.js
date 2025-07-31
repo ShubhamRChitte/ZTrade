@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-const backendURL = process.env.REACT_APP_BACKEND_URL;
-const dashboardURL = process.env.REACT_APP_DASHBOARD_URL;
 
-console.log("Backend URL is:", backendURL);
+const backendURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3002";
+const dashboardURL = process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001";
+console.log("Dashboard URL:", dashboardURL);
+console.log("Backend URL:", backendURL);
 const Login = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
@@ -34,6 +35,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("Attempting login with:", inputValue);
+      console.log("Backend URL:", backendURL);
+      console.log("Dashboard URL:", dashboardURL);
+      
       const { data } = await axios.post(
         `${backendURL}/login`,
         {
@@ -42,15 +47,19 @@ const Login = () => {
         { withCredentials: true }
       );
 
+      console.log("Login response:", data);
       const { success, message } = data;
       if (success) {
         handleSuccess(message);
+        console.log("Login successful, redirecting to dashboard:", dashboardURL);
         window.location.href = `${dashboardURL}`; 
+        //  window.location.href = "http://localhost:3001"; 
       } else {
         handleError(message);
       }
     } catch (error) {
-      console.log(error);
+      console.error("Login error:", error);
+      handleError("Login failed. Please try again.");
     }
     setInputValue({
       ...inputValue,

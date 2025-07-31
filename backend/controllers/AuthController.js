@@ -22,9 +22,9 @@ module.exports.Signup = async (req, res, next) => {
     const token = createSecretToken(savedUser._id);
     res.cookie("token", token, {
       withCredentials: true,
-      httpOnly: true,
-      secure: true,
-      sameSite: "None",
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? "None" : "Lax",
     });
 
     res.status(201).json({
@@ -41,29 +41,31 @@ module.exports.Signup = async (req, res, next) => {
 };
 
 
-module.exports.Login = async (req, res, next) => {
+module.exports.Login = async (req, res) => {
   try {
     const { email, password } = req.body;
     if(!email || !password ){
-      return res.json({message:'All fields are required'})
+      return res.json({success: false, message:'All fields are required'})
     }
     const user = await User.findOne({ email });
     if(!user){
-      return res.json({message:'Incorrect password or email' }) 
+      return res.json({success: false, message:'Incorrect password or email' }) 
     }
     const auth = await bcrypt.compare(password,user.password)
     if (!auth) {
-      return res.json({message:'Incorrect password or email' }) 
+      return res.json({success: false, message:'Incorrect password or email' }) 
     }
      const token = createSecretToken(user._id);
+     console.log("Token created:", token);
      res.cookie("token", token, {
-       withCredentials: true,
-       httpOnly: true,
-      secure: true,
-      sameSite: "None",
+       httpOnly: false,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? "None" : "Lax",
+    
      });
+     console.log("Cookie set successfully");
+    
      res.status(201).json({ message: "User logged in successfully", success: true });
-     next()
   } catch (error) {
     console.error(error);
   }
