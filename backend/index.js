@@ -31,15 +31,36 @@ mongoose
   .catch((err) => console.error(err));
 
   app.use(cors({
-    origin:[
-    "http://localhost:3000",                  // dev frontend
-    "http://localhost:3001",                  // dev dashboard
-    "https://ztrade.onrender.com",           // your actual frontend
-    "https://ztrade1.onrender.com",          // your actual backend
-    "https://ztraded.onrender.com",          // your actual dashboard
-  ],
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      
+      const allowedOrigins = [
+        "http://localhost:3000",                  // dev frontend
+        "http://localhost:3001",                  // dev dashboard
+        "https://ztrade.onrender.com",           // your actual frontend
+        "https://ztrade1.onrender.com",          // your actual backend
+        "https://ztraded.onrender.com",          // your actual dashboard
+        // Add your actual deployment URLs here
+        "https://your-dashboard-domain.com",     // replace with your actual dashboard domain
+        "https://your-frontend-domain.com",      // replace with your actual frontend domain
+      ];
+      
+      // Check if origin is in allowed list or if it's a subdomain of your main domain
+      if (allowedOrigins.indexOf(origin) !== -1 || 
+          origin.includes('localhost') || 
+          origin.includes('render.com') ||
+          origin.includes('vercel.app') ||
+          origin.includes('netlify.app')) {
+        callback(null, true);
+      } else {
+        console.log('CORS blocked origin:', origin);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }));
 
   // Add this line here:

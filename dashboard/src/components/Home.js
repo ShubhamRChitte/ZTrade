@@ -6,10 +6,38 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import TopBar from "./TopBar";
 import Dashboard from "./Dashboard";
-const backendURL = process.env.REACT_APP_BACKEND_URL || "https://ztrade1.onrender.com";
-const frontendURL = process.env.REACT_APP_FRONTEND_URL || "https://ztrade.onrender.com";
+
+// More flexible URL configuration for deployment
+const getBackendURL = () => {
+  if (process.env.REACT_APP_BACKEND_URL) {
+    return process.env.REACT_APP_BACKEND_URL;
+  }
+  // For localhost development
+  if (window.location.hostname === 'localhost') {
+    return 'http://localhost:3002';
+  }
+  // For production - update this to your actual backend URL
+  return "https://ztrade1.onrender.com";
+};
+
+const getFrontendURL = () => {
+  if (process.env.REACT_APP_FRONTEND_URL) {
+    return process.env.REACT_APP_FRONTEND_URL;
+  }
+  // For localhost development
+  if (window.location.hostname === 'localhost') {
+    return 'http://localhost:3000';
+  }
+  // For production - update this to your actual frontend URL
+  return "https://ztrade.onrender.com";
+};
+
+const backendURL = getBackendURL();
+const frontendURL = getFrontendURL();
+
 console.log("Dashboard - Backend URL:", backendURL);
 console.log("Dashboard - Frontend URL:", frontendURL);
+console.log("Current location:", window.location.href);
 
 function Home() {
   const navigate = useNavigate();
@@ -22,6 +50,7 @@ function Home() {
     const verifyCookie = async () => {
       console.log("All cookies:", cookies);
       console.log("Token cookie:", cookies.token);
+      console.log("Attempting to verify token with:", backendURL);
       
       if (!cookies.token) {
         console.log("No token found, redirecting to frontend");
@@ -34,7 +63,13 @@ function Home() {
         const { data } = await axios.post(
           `${backendURL}`,
           {},
-          { withCredentials: true },
+          { 
+            withCredentials: true,
+            timeout: 10000, // 10 second timeout
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          },
         );
         console.log("Backend response:", data);
         
@@ -54,8 +89,29 @@ function Home() {
         }
       } catch (error) {
         console.error("Error verifying token:", error);
+        console.error("Error details:", {
+          message: error.message,
+          response: error.response?.data,
+          status: error.response?.status,
+          url: backendURL
+        });
+        
+        // Show user-friendly error message
+        if (error.code === 'ECONNABORTED') {
+          toast.error("Connection timeout. Please check your internet connection.");
+        } else if (error.response?.status === 404) {
+          toast.error("Backend service not found. Please contact support.");
+        } else if (error.response?.status >= 500) {
+          toast.error("Server error. Please try again later.");
+        } else {
+          toast.error("Authentication failed. Please login again.");
+        }
+        
         removeCookie("token");
-        window.location.href = `${frontendURL}`;
+        // Add a small delay before redirect to show the error message
+        setTimeout(() => {
+          window.location.href = `${frontendURL}`;
+        }, 2000);
       }
     };
     verifyCookie();

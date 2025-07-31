@@ -58,7 +58,7 @@ module.exports.Login = async (req, res) => {
      const token = createSecretToken(user._id);
      console.log("Token created:", token);
      res.cookie("token", token, {
-       httpOnly: false,
+       httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: process.env.NODE_ENV === 'production' ? "None" : "Lax",
     
