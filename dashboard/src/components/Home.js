@@ -6,8 +6,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import TopBar from "./TopBar";
 import Dashboard from "./Dashboard";
-const backendURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3002";
-const frontendURL = process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000";
+const backendURL = process.env.REACT_APP_BACKEND_URL || "https://ztrade1.onrender.com";
+const frontendURL = process.env.REACT_APP_FRONTEND_URL || "https://ztrade.onrender.com";
 console.log("Dashboard - Backend URL:", backendURL);
 console.log("Dashboard - Frontend URL:", frontendURL);
 

@@ -4,8 +4,8 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 
-const backendURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3002";
-const dashboardURL = process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001";
+const backendURL = process.env.REACT_APP_BACKEND_URL || "https://ztrade1.onrender.com";
+const dashboardURL = process.env.REACT_APP_DASHBOARD_URL || "https://ztraded.onrender.com";
 console.log("Dashboard URL:", dashboardURL);
 console.log("Backend URL:", backendURL);
 const Login = () => {

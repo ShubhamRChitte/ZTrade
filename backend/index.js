@@ -34,8 +34,9 @@ mongoose
     origin:[
     "http://localhost:3000",                  // dev frontend
     "http://localhost:3001",                  // dev dashboard
-    "https://zerodha-frontend.onrender.com",  // prod frontend
-    "https://zerodha-dashboard.onrender.com", // prod dashboard
+    "https://ztrade.onrender.com",           // your actual frontend
+    "https://ztrade1.onrender.com",          // your actual backend
+    "https://ztraded.onrender.com",          // your actual dashboard
   ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
@@ -60,6 +61,11 @@ app.use((req, res, next) => {
 
 
 app.use("/", authRoute);
+
+// Test route to verify backend is working
+app.get("/test", (req, res) => {
+  res.json({ message: "Backend is working!", status: "success" });
+});
 
 // get allholdings
 app.get("/allholdings",VerifyUser,async(req,res)=>{
