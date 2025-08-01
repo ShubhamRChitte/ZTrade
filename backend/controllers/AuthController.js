@@ -17,14 +17,13 @@ module.exports.Signup = async (req, res, next) => {
 
     // 🔧 Create user and save manually to trigger pre("save")
     const newUser = new User({ email, password, username });
-    const savedUser = await newUser.save(); // ✅ triggers pre-save hook
+    const savedUser = await newUser.save(); 
 
     const token = createSecretToken(savedUser._id);
     res.cookie("token", token, {
-      withCredentials: true,
       httpOnly: false,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? "None" : "Lax",
+      secure: true,
+      sameSite: "None",
     });
 
     res.status(201).json({
@@ -58,10 +57,9 @@ module.exports.Login = async (req, res) => {
      const token = createSecretToken(user._id);
      console.log("Token created:", token);
      res.cookie("token", token, {
-       httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: process.env.NODE_ENV === 'production' ? "None" : "Lax",
-    
+       httpOnly: false, // Changed to false so frontend can access it
+       secure: true,
+       sameSite: "None",
      });
      console.log("Cookie set successfully");
     

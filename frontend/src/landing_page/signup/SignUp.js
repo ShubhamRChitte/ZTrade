@@ -45,9 +45,6 @@ const SignUp = () => {
       const { success, message } = data;
       if (success) {
         handleSuccess(message);
-        // setTimeout(() => {
-        //   navigate("/");
-        // }, 1000);
           window.location.href = `${dashboardURL}`; 
       } else {
         handleError(message);

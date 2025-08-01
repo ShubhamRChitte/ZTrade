@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import WatchList2 from "./WatchList2";
+import axios from "axios";
 
 const frontendURL = process.env.REACT_APP_FRONTEND_URL;
 
@@ -21,10 +22,18 @@ function Menu({username,userID}) {
     const menuClass = "menu";
     const activeMenuClass = "menu selected";
 
- const Logout = () => {
-    removeCookie("token");
-     window.location.href = `${frontendURL}`;
+ const Logout = async () => {
+    try {
+      removeCookie("token");
+      window.location.href = `${frontendURL}`;
+    } catch (error) {
+      console.error("Logout error:", error);
+      // Fallback logout
+      removeCookie("token");
+      window.location.href = `${frontendURL}`;
+    }
   };
+
 
 
   
@@ -166,7 +175,9 @@ function Menu({username,userID}) {
                             padding: "5px",
                             border: "none",
                             backgroundColor: "#f5f5f5",
-                            cursor: "pointer"
+                            cursor: "pointer",
+                            marginBottom: "5px",
+                            width: "100%"
                             }}
                         >
                             LOGOUT
