@@ -56,9 +56,12 @@ const Login = () => {
           password: "",
         });
         // window.location.href = `${dashboardURL}`; 
-        axios.post("https://ztraded.onrender.com", { 
-          withCredentials: true
-        }); 
+        axios.post("https://ztrade-api.onrender.com/verify", {}, {
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
       } else {
         handleError(message);
         setInputValue({
