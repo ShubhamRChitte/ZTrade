@@ -56,7 +56,7 @@ const Login = () => {
           password: "",
         });
         // window.location.href = `${dashboardURL}`; 
-        axios.post("https://ztrade-api.onrender.com/verify", {}, {
+        axios.post(`${dashboardURL}/verify`, {}, {
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json'
