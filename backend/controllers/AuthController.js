@@ -57,9 +57,12 @@ module.exports.Login = async (req, res) => {
      const token = createSecretToken(user._id);
      console.log("Token created:", token);
      res.cookie("token", token, {
-       httpOnly: false, // Changed to false so frontend can access it
-       secure: true,
-       sameSite: "None",
+       // httpOnly: false, // Changed to false so frontend can access it
+       // secure: true,
+       // sameSite: "None",
+        httpOnly: true,
+        secure: true,          // ✅ because you're on HTTPS (Render)
+        sameSite: "None",
      });
      console.log("Cookie set successfully");
     
