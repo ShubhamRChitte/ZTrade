@@ -31,8 +31,12 @@ mongoose
   .catch((err) => console.error(err));
 
   app.use(cors({
-    origin: true ,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    // origin: true ,
+    // methods: ["GET", "POST", "PUT", "DELETE"],
+     origin: [
+    "https://ztrade.onrender.com",
+    "https://ztraded.onrender.com"
+  ],
     credentials: true,
   }));
 
