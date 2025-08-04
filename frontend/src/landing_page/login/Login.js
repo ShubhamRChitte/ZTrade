@@ -56,7 +56,7 @@ const Login = () => {
           password: "",
         });
         // window.location.href = `${dashboardURL}`; 
-        axios.get("https://ztraded.onrender.com", { 
+        axios.post("https://ztraded.onrender.com", { 
           withCredentials: true
         }); 
       } else {
