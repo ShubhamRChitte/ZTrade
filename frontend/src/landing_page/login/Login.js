@@ -55,12 +55,8 @@ const Login = () => {
           email: "",
           password: "",
         });
-        // window.location.href = `${dashboardURL}`; 
-        axios.post(`${dashboardURL}/verify`, {}, {
-  withCredentials: true,
-  headers: {
-    'Content-Type': 'application/json'
-  }
+        window.location.href = `${dashboardURL}`; 
+        
 });
       } else {
         handleError(message);
