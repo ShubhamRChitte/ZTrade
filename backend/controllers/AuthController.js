@@ -21,9 +21,10 @@ module.exports.Signup = async (req, res, next) => {
 
     const token = createSecretToken(savedUser._id);
     res.cookie("token", token, {
-      httpOnly: false,
+      httpOnly: true,
       secure: true,
       sameSite: "None",
+       domain: ".onrender.com",
     });
 
     res.status(201).json({
@@ -63,6 +64,7 @@ module.exports.Login = async (req, res) => {
         httpOnly: true,
         secure: true,          // ✅ because you're on HTTPS (Render)
         sameSite: "None",
+        domain: ".onrender.com",
      });
      console.log("Cookie set successfully");
     
