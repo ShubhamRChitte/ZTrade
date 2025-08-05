@@ -56,9 +56,7 @@ const Login = () => {
           password: "",
         });
         window.location.href = `${dashboardURL}`; 
-      }
-        
-});
+
       } else {
         handleError(message);
         setInputValue({
